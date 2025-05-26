@@ -2,12 +2,11 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-@app.route("/dataUsage", methods=["GET"])
+@app.route("/dataUsage/<user_id>", methods=["GET"])
 def data_usage():
     user_id = request.args.get("user_id")
  
     return jsonify({
-        "user_id": user_id,
         "plan": "Monthly 10GB",
         "total_data_mb": 10240,
         "used_data_mb": 7345,
